@@ -50,11 +50,18 @@ class SessionLSTM(nn.Module):
         return output
 
 
-# Create DataLoader objects
-train_dataset = SessionDataset(train_data)
-test_dataset = SessionDataset(test_data)
-train_loader = DataLoader(train_dataset, batch_size=500, shuffle=True)
-test_loader = DataLoader(test_dataset, batch_size=500, shuffle=False)
+# Use a smaller sample of the dataset (because it takes too much time to load the full dataset)
+sample_fraction = 0.1
+data_sample = data.sample(frac=sample_fraction, random_state=42)
+
+# Split the sampled dataset into train and test
+train_data_sample, test_data_sample = train_test_split(data_sample, test_size=0.2, random_state=42)
+
+# Create DataLoader objects with the smaller dataset
+train_dataset_sample = SessionDataset(train_data_sample)
+test_dataset_sample = SessionDataset(test_data_sample)
+train_loader_sample = DataLoader(train_dataset_sample, batch_size=500, shuffle=True)
+test_loader_sample = DataLoader(test_dataset_sample, batch_size=500, shuffle=False)
 
 # Initialize model, loss function, and optimizer
 n_items = len(item_encoder.classes_)
@@ -67,7 +74,7 @@ num_epochs = 1
 total_loss = 0
 for epoch in range(num_epochs):
     start_time = time.time()
-    for i, (inputs, target) in enumerate(train_loader):
+    for i, (inputs, target) in enumerate(train_loader_sample):
         optimizer.zero_grad()
         outputs = model(inputs)
         loss = criterion(outputs, target)
@@ -75,13 +82,13 @@ for epoch in range(num_epochs):
         loss.backward()
         optimizer.step()
 
-        print(f'Epoch [{epoch + 1}/{num_epochs}], Step [{i + 1}/{len(train_loader)}]')
+        print(f'Epoch [{epoch + 1}/{num_epochs}], Step [{i + 1}/{len(train_loader_sample)}]')
 
 # Test the model
 with torch.no_grad():
     correct = 0
     total = 0
-    for inputs, target in test_loader:
+    for inputs, target in test_loader_sample:
         outputs = model(inputs)
         _, predicted = torch.max(outputs.data, 1)
         total += target.size(0)
