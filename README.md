@@ -1,4 +1,4 @@
-##Retail Recommendation System with Recurrent Neural Networks
+#Retail Recommendation System with Recurrent Neural Networks
 
 This repository contains the code for building a session-based recommendation system using PyTorch. The system is designed to recommend the next item to a user based on their session history.
 Getting Started
