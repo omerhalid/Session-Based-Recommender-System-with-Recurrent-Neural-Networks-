@@ -45,9 +45,9 @@ The model is initially trained for a single epoch on a subset of the dataset. Fo
 
 Input a user session history to receive item recommendations.
 
-Detailed Documentation
+## Detailed Documentation
 
-For more in-depth information, refer to the detailed documentation in this repository.
+For more in-depth information, refer to the [detailed documentation](Session-Based-Recommender-System-with-Recurrent-Neural-Networks-/ZENG-Recommender-System-dokumentacio.pdf) in this repository.
 
 ## Contributing
 
