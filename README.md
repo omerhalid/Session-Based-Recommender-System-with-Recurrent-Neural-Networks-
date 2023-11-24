@@ -47,7 +47,7 @@ Input a user session history to receive item recommendations.
 
 ## Detailed Documentation
 
-For more in-depth information, refer to the [detailed documentation](Session-Based-Recommender-System-with-Recurrent-Neural-Networks-/ZENG-Recommender-System-dokumentacio.pdf) in this repository.
+For more in-depth information, refer to the [detailed documentation](ZENG-Recommender-System-dokumentacio.pdf) in this repository.
 
 ## Contributing
 
