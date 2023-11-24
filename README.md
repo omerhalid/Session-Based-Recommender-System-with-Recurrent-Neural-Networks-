@@ -45,6 +45,10 @@ The model is initially trained for a single epoch on a subset of the dataset. Fo
 
 Input a user session history to receive item recommendations.
 
+Detailed Documentation
+
+For more in-depth information, refer to the detailed documentation in this repository.
+
 ## Contributing
 
 Contributions are welcome! Fork the repo and submit pull requests for any improvements or bug fixes.
